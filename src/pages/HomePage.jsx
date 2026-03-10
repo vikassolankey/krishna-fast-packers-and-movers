@@ -8,6 +8,7 @@ import Achievements from '../components/Achievements';
 import TrustedBy from '../components/TrustedBy';
 import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
+import OurTeam from '../components/OurTeam';
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
         <Services />
         <WhyChooseUs />
         <Achievements />
+        <OurTeam />
         <TrustedBy />
         <Testimonials />
         <Contact />

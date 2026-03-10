@@ -15,6 +15,7 @@ import WhyChooseUsPage from './pages/WhyChooseUsPage';
 import GalleryPage from './pages/GalleryPage';
 import VideosPage from './pages/VideosPage';
 import ContactPage from './pages/ContactPage';
+import CertificatesPage from './pages/CertificatesPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -35,6 +36,7 @@ function AnimatedRoutes() {
         <Route path="/why-choose-us" element={<WhyChooseUsPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/videos" element={<VideosPage />} />
+        <Route path="/certificates" element={<CertificatesPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </AnimatePresence>

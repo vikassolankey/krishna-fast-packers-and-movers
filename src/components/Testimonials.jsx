@@ -21,10 +21,42 @@ const testimonials = [
     role: 'Car Owner',
     text: 'I was worried about my car transport, but they used a specialized carrier and delivered it without a single scratch. Highly recommended!',
     rating: 5
+  },
+  {
+    name: 'Sneha Patel',
+    role: 'Homeowner',
+    text: 'Packing quality was excellent and delivery was on time. The team was polite and helpful throughout.',
+    rating: 5
+  },
+  {
+    name: 'Vikas Mehta',
+    role: 'Business Owner',
+    text: 'They moved our office furniture and systems with care. Zero damage and quick setup.',
+    rating: 5
+  },
+  {
+    name: 'Ankita Roy',
+    role: 'Student',
+    text: 'Shifted from hostel to PG without any hassle. Transparent pricing and responsive support.',
+    rating: 5
+  },
+  {
+    name: 'Manoj Kumar',
+    role: 'Car Owner',
+    text: 'Car transport was handled professionally. Tracking and delivery updates were timely.',
+    rating: 5
+  },
+  {
+    name: 'Deepika Singh',
+    role: 'HR Lead',
+    text: 'Company relocation was smooth. The team coordinated perfectly and ensured deadlines were met.',
+    rating: 5
   }
 ];
 
 export default function Testimonials() {
+  const full = testimonials;
+  const marquee = [...full, ...full];
   return (
     <Section className="py-24 bg-indigo-500/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,20 +68,20 @@ export default function Testimonials() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((t, i) => (
+        <div className="grid md:hidden gap-8">
+          {full.map((t, i) => (
             <motion.div
               key={t.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.06 }}
               className="p-8 bg-slate-900/50 border border-white/10 rounded-[2.5rem] relative backdrop-blur-sm"
             >
               <Quote className="absolute top-6 right-8 text-indigo-500/20" size={48} />
               <div className="flex gap-1 mb-4">
-                {[...Array(t.rating)].map((_, i) => (
-                  <Star key={i} size={16} className="fill-yellow-500 text-yellow-500" />
+                {[...Array(t.rating)].map((_, i2) => (
+                  <Star key={i2} size={16} className="fill-yellow-500 text-yellow-500" />
                 ))}
               </div>
               <p className="text-gray-300 mb-6 italic leading-relaxed">"{t.text}"</p>
@@ -59,6 +91,34 @@ export default function Testimonials() {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        <div className="hidden md:block overflow-hidden">
+          <motion.div
+            className="flex gap-8 will-change-transform"
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+            style={{ width: 'max-content' }}
+          >
+            {marquee.map((t, idx) => (
+              <motion.div
+                key={`${t.name}-${idx}`}
+                className="w-[28rem] flex-none p-8 bg-slate-900/50 border border-white/10 rounded-[2.5rem] relative backdrop-blur-sm"
+              >
+                <Quote className="absolute top-6 right-8 text-indigo-500/20" size={48} />
+                <div className="flex gap-1 mb-4">
+                  {[...Array(t.rating)].map((_, i2) => (
+                    <Star key={i2} size={16} className="fill-yellow-500 text-yellow-500" />
+                  ))}
+                </div>
+                <p className="text-gray-300 mb-6 italic leading-relaxed">"{t.text}"</p>
+                <div>
+                  <div className="text-white font-bold">{t.name}</div>
+                  <div className="text-gray-500 text-sm">{t.role}</div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </Section>

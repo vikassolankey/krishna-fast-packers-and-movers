@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Home, ChevronRight, Phone, Mail, MapPin, Instagram, Facebook, Linkedin, Youtube, Twitter, Info, Image as ImageIcon, Play, Truck, Car, Bike, Dog, Package, ArrowUpCircle } from 'lucide-react';
+import { Home, ChevronRight, Phone, Mail, MapPin, Instagram, Facebook, Linkedin, Youtube, Twitter, Info, Image as ImageIcon, Play, Truck, Car, Bike, Dog, Package, ArrowUpCircle, FileCheck } from 'lucide-react';
 
 export default function Footer() {
   const [visits, setVisits] = useState(0);
@@ -59,6 +59,7 @@ export default function Footer() {
                 { label: 'Why Us', href: '/why-choose-us', Icon: ArrowUpCircle },
                 { label: 'Gallery', href: '/gallery', Icon: ImageIcon },
                 { label: 'Videos', href: '/videos', Icon: Play },
+                { label: 'Certificates', href: '/certificates', Icon: FileCheck },
                 { label: 'Contact Us', href: '/contact', Icon: Phone }
               ].map(({ label, href, Icon }) => (
                 <li key={label}>
