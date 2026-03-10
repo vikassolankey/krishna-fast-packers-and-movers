@@ -80,10 +80,9 @@ const container = {
 };
 
 const item = {
-  hidden: { opacity: 0, y: 20, scale: 0.98 },
+  hidden: { opacity: 0, scale: 0.98 },
   show: {
     opacity: 1,
-    y: 0,
     scale: 1,
     transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
   },
@@ -114,50 +113,48 @@ export default function OurTeam() {
             <motion.div
               key={m.name}
               variants={item}
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               className="rounded-2xl bg-white/5 border border-white/10 shadow-md hover:shadow-2xl transition-shadow transform-gpu hover:scale-105 overflow-hidden"
             >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={m.image}
-                  alt={m.name}
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="p-6">
-                <div className="text-sm font-semibold text-indigo-400 mb-1">{m.role}</div>
-                <h3 className="text-lg font-bold">{m.name}</h3>
-                <p className="text-gray-400 text-sm mt-3">{m.desc}</p>
-                <div className="mt-4 flex items-center gap-3">
-                  <a
-                    href={m.linkedin}
-                    aria-label="LinkedIn"
-                    className="p-2 rounded-full border border-white/10 text-gray-300 hover:text-indigo-300 hover:border-indigo-300/40 transition-colors"
-                  >
-                    <Linkedin size={18} />
-                  </a>
-                  <a
-                    href={m.email}
-                    aria-label="Email"
-                    className="p-2 rounded-full border border-white/10 text-gray-300 hover:text-emerald-300 hover:border-emerald-300/40 transition-colors"
-                  >
-                    <Mail size={18} />
-                  </a>
+              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}>
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={m.image}
+                    alt={m.name}
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
                 </div>
-              </div>
+                <div className="p-6">
+                  <div className="text-sm font-semibold text-indigo-400 mb-1">{m.role}</div>
+                  <h3 className="text-lg font-bold">{m.name}</h3>
+                  <p className="text-gray-400 text-sm mt-3">{m.desc}</p>
+                  <div className="mt-4 flex items-center gap-3">
+                    <a
+                      href={m.linkedin}
+                      aria-label="LinkedIn"
+                      className="p-2 rounded-full border border-white/10 text-gray-300 hover:text-indigo-300 hover:border-indigo-300/40 transition-colors"
+                    >
+                      <Linkedin size={18} />
+                    </a>
+                    <a
+                      href={m.email}
+                      aria-label="Email"
+                      className="p-2 rounded-full border border-white/10 text-gray-300 hover:text-emerald-300 hover:border-emerald-300/40 transition-colors"
+                    >
+                      <Mail size={18} />
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>
 
         {/* Desktop horizontal floating carousel */}
         <div className="hidden lg:block overflow-hidden">
-          <motion.div
-            className="flex gap-6 will-change-transform"
-            animate={{ x: ['0%', '-50%'] }}
-            transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-            style={{ width: 'max-content' }}
+          <div
+            className="flex gap-6 marquee"
+            style={{ width: 'max-content', animationDuration: '30s' }}
           >
             {marquee.map((m, idx) => (
               <motion.div
@@ -197,7 +194,7 @@ export default function OurTeam() {
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </Section>
